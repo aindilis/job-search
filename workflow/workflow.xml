@@ -1,0 +1,24 @@
+<workflow>
+  <type>myworkflow</type>
+  <state name="INITIAL">
+    <action name="upload file" resulting_state="uploaded" />
+  </state>
+  <state name="uploaded" autorun="yes">
+    <action name="verify file" resulting_state="annotate">
+      <!-- everyone other than 'CWINTERS' must verify -->
+      <condition test="$context->{user} ne 'CWINTERS'" />
+    </action>
+    <action name="null" resulting_state="annotated">
+      <condition test="$context->{user} eq 'CWINTERS'" />
+    </action>
+  </state>
+  <state name="verify file">
+    <action name="annotate">
+      <condition name="can_annotate" />
+    </action>
+  </state>
+  <state name="annotated">
+    <action name="null" resulting_state="finished" />
+  </state>
+  <state name="finished" />
+</workflow>

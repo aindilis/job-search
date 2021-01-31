@@ -1,0 +1,5 @@
+<validators>
+  <validator name="filesize_cap" class="MyApp::Validator::FileSizeCap">
+    <param name="max_size" value="20M" />
+  </validator>
+</validators>

@@ -1,0 +1,243 @@
+$VAR1 = {
+	 'Human-0' => {
+			  'Iwouldrequiretoohigh252' => [
+                                                        {
+							 'Act' => 'We cannot do that.',
+							 'State' => 'Wecannotdothat331'
+                                                        },
+                                                        {
+							 'Act' => 'Okay.',
+							 'State' => 'Okay465'
+                                                        }
+						       ],
+			  'IacceptyourofferofY606' => [
+                                                       {
+							'Act' => 'Very good.',
+							'State' => 'Verygood276'
+                                                       }
+						      ],
+			  'GoodIwouldliketodiscussmypaynow972' => [
+                                                                   {
+								    'State' => 'Okayletsmovetoadifferentroom139',
+								    'Act' => 'Okay, let\'s move to a different room.'
+                                                                   },
+                                                                   {
+								    'State' => 'Ohwecantdothatnow442',
+								    'Act' => 'Oh, we can\'t do that now.'
+                                                                   }
+								  ],
+			  'AlrightweagreetoZ813' => [],
+			  'StillIcannotaffordthat705' => [
+                                                          {
+							   'Act' => 'We cannot do that.',
+							   'State' => 'Wecannotdothat331'
+                                                          },
+                                                          {
+							   'Act' => 'Okay.',
+							   'State' => 'Okay465'
+                                                          }
+							 ],
+			  'Imsorrywecouldntworksomethingouttoday63' => [],
+			  'Iwouldratherthatyoumaketheoffer263' => [],
+			  'OurofferisYacceptable366' => [],
+			  'Whatisyouroffer673' => [
+                                                   {
+						    'State' => 'OurofferisXtoolow975',
+						    'Act' => 'Our offer is X (too low)'
+                                                   },
+                                                   {
+						    'State' => 'OurofferisYacceptable537',
+						    'Act' => 'Our offer is Y (acceptable)'
+                                                   },
+                                                   {
+						    'Act' => 'You make an offer.',
+						    'State' => 'Youmakeanoffer897'
+                                                   }
+						  ],
+			  'Whenwouldbeagoodtimetodiscussit55' => [
+                                                                  {
+								   'Act' => 'Oh, at such and such a time.',
+								   'State' => 'Ohatsuchandsuchatime134'
+                                                                  }
+								 ],
+			  'Okaythenwhatcanyoudo560' => [
+                                                        {
+							 'Act' => 'We offer X (same value as before)',
+							 'State' => 'WeofferXsamevalueasbefore997'
+                                                        },
+                                                        {
+							 'Act' => 'We offer Y (acceptable)',
+							 'State' => 'WeofferYacceptable490'
+                                                        }
+						       ],
+			  'AtthatrateIcantaffordtoworkhereDoyouhave693' => [
+                                                                            {
+									     'Act' => 'No',
+									     'State' => 'No198'
+                                                                            },
+                                                                            {
+									     'Act' => 'Okay, we offer X (too low)',
+									     'State' => 'OkayweofferXtoolow28'
+                                                                            },
+                                                                            {
+									     'Act' => 'Okay, we offer Y (acceptable)',
+									     'State' => 'OkayweofferYacceptable72'
+                                                                            }
+									   ],
+			  'LetmecounterofferHowaboutZtoohigh818' => [
+                                                                     {
+								      'Act' => 'Okay.',
+								      'State' => 'Okay465'
+                                                                     },
+                                                                     {
+								      'Act' => 'We cannot do that.',
+								      'State' => 'Wecannotdothat331'
+                                                                     }
+								    ],
+			  'Goodandyou493' => [
+                                              {
+					       'State' => 'Imdoingwell153',
+					       'Act' => 'I\'m doing well.'
+                                              }
+					     ],
+			  'end' => [
+                                    {
+				     'State' => 'start',
+				     'Act' => 'Goodbye!'
+                                    }
+				   ],
+			  'Okayletsgetbacktowork75' => [],
+			  'Alright396' => [],
+			  'OkayIamgladwewereabletoworkthisouttoday488' => [
+                                                                           {
+									    'Act' => 'So am I.',
+									    'State' => 'SoamI316'
+                                                                           }
+									  ],
+			  'start' => [
+                                      {
+				       'State' => 'HiHowAreYou',
+				       'Act' => 'Hi, how are you?'
+                                      }
+				     ],
+			 },
+	 'Human-1' => {
+		       'HiHowAreYou' => [
+                                      {
+				       'State' => 'Goodandyou493',
+				       'Act' => 'Good, and you?'
+                                      }
+				     ],
+		       'OurofferisXtoolow975' => [
+						  {
+						   'Act' => 'At that rate I can\'t afford to work here.  Do you have a better offer?',
+						   'State' => 'AtthatrateIcantaffordtoworkhereDoyouhave693'
+						  }
+						 ],
+		       'WeofferYacceptable490' => [
+						   {
+						    'Act' => 'I accept your offer of Y.',
+						    'State' => 'IacceptyourofferofY606'
+						   }
+						  ],
+		       'OurofferisYacceptable537' => [
+						      {
+						       'State' => 'IacceptyourofferofY606',
+						       'Act' => 'I accept your offer of Y.'
+						      }
+						     ],
+		       'OkayweofferYacceptable72' => [
+						      {
+						       'Act' => 'I accept your offer of Y.',
+						       'State' => 'IacceptyourofferofY606'
+						      }
+						     ],
+		       'Wecannotdothat331' => [
+					       {
+						'Act' => 'Okay, then what can you do?',
+						'State' => 'Okaythenwhatcanyoudo560'
+					       }
+					      ],
+		       'Okay465' => [
+				     {
+				      'Act' => 'Alright we agree to Z.',
+				      'State' => 'AlrightweagreetoZ813'
+				     }
+				    ],
+		       'Okayletsmovetoadifferentroom139' => [
+							     {
+							      'State' => 'Whatisyouroffer673',
+							      'Act' => 'What is your offer?'
+							     }
+							    ],
+		       'Youmakeanoffer897' => [
+					       {
+						'Act' => 'I would rather that you make the offer.',
+						'State' => 'Iwouldratherthatyoumaketheoffer263'
+					       },
+					       {
+						'Act' => 'I would require Z (too high)',
+						'State' => 'Iwouldrequiretoohigh252'
+					       }
+					      ],
+		       'No198' => [
+				   {
+				    'Act' => 'I\'m sorry we couldn\'t work something out today.',
+				    'State' => 'Imsorrywecouldntworksomethingouttoday63'
+				   },
+				   {
+				    'Act' => 'Let me counter offer.  How about Z? (too high)',
+				    'State' => 'LetmecounterofferHowaboutZtoohigh818'
+				   }
+				  ],
+		       'SoamI316' => [
+				      {
+				       'Act' => 'Okay, let\'s get back to work.',
+				       'State' => 'Okayletsgetbacktowork75'
+				      }
+				     ],
+		       'OkayweofferXtoolow28' => [
+						  {
+						   'Act' => 'No.  How about Z (too high)',
+						   'State' => 'StillIcannotaffordthat705'
+						  }
+						 ],
+		       'Ohatsuchandsuchatime134' => [
+						     {
+						      'Act' => 'Alright.',
+						      'State' => 'Alright396'
+						     }
+						    ],
+		       'end' => [
+				 {
+				  'State' => 'start',
+				  'Act' => 'Goodbye!'
+				 }
+				],
+		       'Imdoingwell153' => [
+					    {
+					     'State' => 'GoodIwouldliketodiscussmypaynow972',
+					     'Act' => 'Good.  I would like to discuss my pay now.'
+					    }
+					   ],
+		       'Okay977' => [],
+		       'Verygood276' => [
+					 {
+					  'Act' => 'Okay, I am glad we were able to work this out today.',
+					  'State' => 'OkayIamgladwewereabletoworkthisouttoday488'
+					 }
+					],
+		       'WeofferXsamevalueasbefore997' => [
+							  {
+							   'Act' => 'I\'m sorry we couldn\'t work something out today.',
+							   'State' => 'Imsorrywecouldntworksomethingouttoday63'
+							  }
+							 ],
+		       'Ohwecantdothatnow442' => [
+						  {
+						   'Act' => 'When would be a good time to discuss it?',
+						   'State' => 'Whenwouldbeagoodtimetodiscussit55'
+						  }
+						 ]
+		      },
+        };

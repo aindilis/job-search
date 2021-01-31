@@ -1,0 +1,16 @@
+<actions>
+  <action name="upload file" class="MyApp::Action::Upload">
+    <field name="path" label="File Path"
+	   description="Path to file" is_required="yes" />
+  </action>
+
+  <action name="verify file" class="MyApp::Action::Verify">
+    <validator name="filesize_cap">
+      <arg>$file_size</arg>
+    </validator>
+  </action>
+
+  <action name="annotate"    class="MyApp::Action::Annotate" />
+
+  <action name="null"        class="Workflow::Action::Null" />
+</actions>

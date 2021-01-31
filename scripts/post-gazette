@@ -1,0 +1,102 @@
+#!/usr/bin/perl -w
+
+use strict;
+use LWP::UserAgent;
+
+my $data = '/html/jobs/post-gazette-listings.html';
+my %oldjobs = ();
+
+open (JOBS, "<$data") || print "error opening $data\n";
+  my $olddata = "";
+if (open (JOBS, "+<$data"))
+{
+  read JOBS, $olddata, 500000;
+  my @oj = ($olddata =~ /details.html\?id=([0-9a-f]*)/sg);
+  print "number of old jobs found is ", scalar(@oj), "\n";
+  map {$oldjobs{$_} = 'Y'} @oj;
+}
+
+my $ua = LWP::UserAgent->new;
+
+my @newjobs = ();
+my $next = "";
+
+my $page;
+do{
+  my $urlbase = "http://pgh.careercast.com";
+  my $url;
+  if ($next)
+  {
+    $url = $urlbase . $next;
+  }
+  else
+  {
+    my $urlrt = 'js.php?lookid=pgh&qSort=date&qState=PA&view=2&pp=100';
+  my $urlacc = 'qInd=pghcategoryaccounting';
+  my $urladm = 'qInd=pghcategoryadministrative';
+  my $urlcom = 'qInd=pghcategorycomputer';
+    my $urledu = 'qInd=pghcategoryeducation';
+  my $urlgen = 'qInd=pghcategorygeneral';
+  my $urlpro = 'qInd=pghcategoryprofessional';
+  my $urlhos = 'qInd=pghcategoryhospitality';
+    $url = "$urlbase/$urlrt&$urlgen&$urlacc&$urladm&$urlcom&$urledu&$urlpro&$urlhos";
+  }
+  $| = 1;
+    print " fetching page...";
+  my $res = $ua->get($url);
+    print "got it\n";
+  $page = $res->content;
+#  open NJ, "</tmp/general.html";
+#    read NJ, $page, 500000;
+    
+  my @pageparts = split /<table[^>]*>/, $page;
+  my $page2;
+  foreach my $p (@pageparts)
+  {
+    if ($p =~ />Job Title</)
+    {
+      $page2 = $p;
+      last;
+    }
+  }
+  if (!defined($page2))
+  {
+    print "  Error: page2 not defined\n";
+  }
+  my @rows = split /<\/tr>/ , $page2;
+    print "  Number of rows is ", scalar(@rows), "\n";
+  foreach my $row (@rows)
+  {
+#    sleep 1;
+#    my ($id, $desc, $date) =
+#     ($row=~ /details.html\?id=([^&]*)[^>]*>([^<]*).*([0-9]*-[0-9]*-[0-9]*)/s);
+#    print " row is |$row|\n";
+    my ($id, $desc) =
+      ($row=~ /details.html\?id=([^&]*)[^>]*>([^<]*)/s);
+    if (!$id or !$desc)
+    {
+      next;
+    }
+#    print "  id is |$id| and desc is |$desc|\n";
+    push @newjobs, [$id, $desc] unless (exists($oldjobs{$id}));
+  }
+  print "  found ", scalar(@newjobs), " new jobs so far\n";
+} while (($next) = ($page =~ /<a href="([^>]*)"><img[^>]*but.arrowNext.gif/));
+
+print ("number of new jobs found is ", scalar(@newjobs), "\n");
+
+my (undef, undef, undef, $day, $mon, $year) = localtime;
+$mon = (qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec))[$mon];
+$year +=1900;
+print "Date is $mon-$day-$year\n";
+
+system "cp $data $data.bak";
+open (JOBS, ">$data");
+foreach my $job (@newjobs)
+{
+  print JOBS '<br><a href="http://pgh.careercast.com/texis/jobsearch/details.html?id=',
+    $$job[0], '">', $$job[1], "</a> ";
+  print JOBS "$mon-$day-$year\n";
+}
+
+print JOBS $olddata;

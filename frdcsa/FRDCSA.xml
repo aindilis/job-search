@@ -1,0 +1,79 @@
+<system>
+  <title>JobSearch</title>
+  <acronym-expansion></acronym-expansion>
+  <short-description>
+    Job search assistant
+  </short-description>
+  <medium-description>
+    JobSearch  performs   many  of   the  common  tasks   required  in
+    negotiating  jobs.   It helps  users  write  their resumes,  using
+    resume xml,  interfacing with  Audience and Machiavelli,  it helps
+    the user manage job opportunities, and aids in many other tasks in
+    order to  make job searching  a much less  trying and a  much more
+    sure  process.  Moreover,  it  provides a  selective advantage  to
+    people who use open source software.
+  </medium-description>
+  <long-description>
+    <p>Job search has been greatly  extended.  It is now scraping jobs
+    off the  internet, and ordering  them according to relevance  to a
+    candidate's  profile,  albeit  inaccurately,  so  work  is  moving
+    forward smoothly  using MinorThird  and the provided  job labelled
+    data set, which seems to  work extremely well.  I believe there is
+    labelled resume data lying around here somewhere.  We already have
+    large resume and position copora.</p>
+
+    <p>It already does almost everything else we need it to.  Audience
+    is getting to the point where  it will not be difficult to write a
+    simple statemachine  to proxy all communications  and review them.
+    Used Sorcerer to locate  a statemachine editor.  Resume generation
+    is  working but  is inaccurate  until  the task  of extraction  of
+    position  attributes using MinorThird  is finished,  since resumes
+    are generated per position.</p>
+
+    <p>The task  of resume extraction will help  in expanding resumes.
+    FieldGoal/CLEAR  are used  to certify  experience  and familiarity
+    with some given field in very quantitative terms.
+    </p>
+
+    <p>Here is  some old stuff,  an example negotiation  session taken
+    from Audience conversation training simulator:</p>
+    
+  <pre>
+**** Imsorrywecouldntworksomethingouttoday63
+****************************************
+&lt;history>
+	Human-0	Good, and you?
+	Human-1	I'm doing well.
+	Human-0	Good.  I would like to discuss my pay now.
+	Human-1	Okay, let's move to a different room.
+	Human-0	What is your offer?
+	Human-1	Our offer is X (too low)
+	Human-0	At that rate I can't afford to work here.  Do you have a better offer?
+	Human-1	No
+	Human-0	Let me counter offer.  How about Z? (too high)
+	Human-1	We cannot do that.
+	Human-0	Okay, then what can you do?
+	Human-1	We offer X (same value as before)
+	Human-0	I'm sorry we couldn't work something out today.
+&lt;/history>
+Player: Human-1
+State: Imsorrywecouldntworksomethingouttoday63
+0) &lt;Toggle>
+1) &lt;Quit>
+2) &lt;Delete>
+3) &lt;Edit>
+4) &lt;Add-Transposition>
+5) &lt;Backup>
+5
+</pre>
+<para>
+  Other working features are we have a corpus of homepages and resumes
+  and  a statistical  coauthoring system  (functionality  in coauthor)
+  that  helps  the user  write  their  homepage/resume using  language
+  models  trained from the  corpus.  Resume  generation is  done using
+  resumexml.   There is  a module  for CLEAR  which ensures  the users
+  familiarity  with the  subjects (based  on the  doctrinal hierarchy)
+  parsed from the job description stored in the potential-job manager.
+</para>
+  </long-description>
+</system>

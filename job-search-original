@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+use JS;
+use UniLang::Agent::Agent;
+use UniLang::Util::Message;
+
+$UNIVERSAL::agent = UniLang::Agent::Agent->new
+  (Name => "Job-Search",
+   ReceiveHandler => \&Receive);
+$UNIVERSAL::js = JS->new();
+
+sub Receive {
+  my %args = @_;
+  $UNIVERSAL::js->ProcessMessage
+    (Message => $args{Message});
+}
+
+$UNIVERSAL::js->Execute();

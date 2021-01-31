@@ -1,0 +1,4 @@
+<conditions>
+  <condition name="can_annotate"
+	     class="MyApp::Condition::CanAnnotate" />
+</conditions>
